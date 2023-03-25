@@ -12,4 +12,8 @@ class Programsubject extends  ActiveRecord
         return 'programsubject';
     }
 
+    public function getSubjects(){
+        return $this->hasOne(Subjects::class, ['id'=>'subjectid']);
+    }
+
 }

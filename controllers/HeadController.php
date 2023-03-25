@@ -28,8 +28,12 @@ class HeadController extends Controller
     public function actionProgramcard($id){
         $program = Programs::find()->where(['id' =>$id])->one();
         $subjectsid = Programsubject::find()->where(['programid' => $id])->all();
-        $a = $subjectsid->subjectid;
-        $subjects = Subjects::find()->where(['id' => [$a]])->all();
-        return $this->render('programcard', ['id' => $id, 'program'=>$program, 'subid'=>$subjectsid, 'sub'=>$subjects], );
+
+        return $this->render('programcard',
+            [
+            'program'=>$program,
+            'subid'=>$subjectsid,
+            ],
+        );
     }
 }

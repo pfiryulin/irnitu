@@ -26,8 +26,12 @@ main{
     border-radius: 5px;
 }
 
-.susubject__list div{
+.susubject__list>div{
     /*text-align: center ;*/
     width: 20%;
 }
 
+
+.item__button{
+    width: 100%;
+}
