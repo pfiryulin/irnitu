@@ -4,10 +4,12 @@
 namespace app\controllers;
 
 
+use app\models\CreatureForm;
 use app\models\Programs;
 use app\models\Programsubject;
 use app\models\Roles;
 use app\models\Subjects;
+use yii\base\BaseObject;
 use yii\web\Controller;
 
 class HeadController extends Controller
@@ -16,10 +18,16 @@ class HeadController extends Controller
 
 
          $program = Programs::find()->all();
-
+         $creat = new CreatureForm();
+         if($creat->load(\Yii::$app->request->post()) && $creat->validate()){
+             \Yii::$app->session->setFlash('success', 'Данные приняты');
+             return $this->refresh();
+         }
         return$this->render('index', [
-            'program'=>$program,
-        ]);
+            'progr' => $program,
+            'create' => $creat]);
+
+
 
 
 

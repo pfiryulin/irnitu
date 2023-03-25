@@ -8,6 +8,14 @@ main{
     width: 90%;
     margin: 50px auto;
 }
+
+nav{
+    width: 90%;
+    margin: 50px auto;
+    display: flex;
+    justify-content: flex-start;
+    gap:30px;
+}
 .item{
     display: flex;
     justify-content: space-between;
@@ -35,3 +43,33 @@ main{
 .item__button{
     width: 100%;
 }
+
+.program__add{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.modalwin{
+    width: 90vw;
+    padding: 30px 10%;
+    position: absolute;
+    top: 250px;
+    left: 5%;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.form-group{
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    gap:50px;
+}
+
+.form-group>label{
+    width: 30%;
+}
+
