@@ -4,4 +4,4 @@
 
 $this->title = Yii::$app->name;
 ?>
-
+<h1>Hello world</h1>

@@ -8,8 +8,9 @@ $this->title = Yii::$app->name;
 ?>
 
 <div class="login__form">
-   Выбирете роль: <select name="" id="">
-        
+   Выбирете роль:
+    <select name="" id="selectRole">
+        <option value="">-Роли-</option>
         <?php 
         if(isset($role)){
             foreach ($role as $role){
@@ -21,5 +22,6 @@ $this->title = Yii::$app->name;
         ?>
         
     </select>
-    .
+    <div id="link"><a href="">Войти</a></div>
+
 </div>
