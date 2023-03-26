@@ -19,10 +19,17 @@ class HeadController extends Controller
 
          $program = Programs::find()->all();
          $model = new CreatureForm();
+         $subjects = Subjects::find()->all();
 
+         if($model->load(\Yii::$app->request->post()) && $model->validate()){
+             \Yii::$app->session->setFlash('success',
+                 'Учебная программа создана, не забудьте добавить предметы');
+             return $this->refresh();
+         }
 
-
-        return$this->render('index', ['program' => $program, 'model'=>$model,]);
+        return$this->render('index', ['program' => $program,
+            'model'=>$model,
+            'subject'=>$subjects]);
 
 
 

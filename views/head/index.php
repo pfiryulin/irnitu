@@ -52,14 +52,24 @@ $this->title = Yii::$app->name;
 
     </section>
     <div class="modalwin creature">
+        <div class="close">
+            Закрыть
+        </div>
         <?php $form = ActiveForm::begin(); ?>
             <?= $form->field($model, 'nameprogram');?>
             <?= $form->field($model, 'description')->textarea(['rows'=>7, 'maxlength' => 1024,]);?>
-            <?= $form->field($model, 'subject');?>
             <div class="form-group">
                 <?= Html::submitButton('Создать', ['class' => 'button',]); ?>
             </div>
+
         <?php ActiveForm::end() ?>
+        <?php
+            if(Yii::$app->session->hasFlash('success')){?>
+                <div class="modalwin--message">
+                    <?= Yii::$app->session->getFlash('success');?>
+                </div>
+           <?php }
+        ?>
 
     </div>
 </main>

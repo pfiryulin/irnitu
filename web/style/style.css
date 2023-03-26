@@ -75,3 +75,15 @@ nav{
     width: 30%;
 }
 
+.close{
+    position: absolute;
+    right: 30px;
+    color: grey;
+    cursor: pointer;
+}
+
+.modalwin--message{
+    font-size: 20px;
+    color:green;
+}
+
