@@ -32,6 +32,8 @@ nav{
     padding: 10px;
     background: #4fb2f6;
     border-radius: 5px;
+    border: none;
+
 }
 
 .susubject__list>div{

@@ -18,14 +18,11 @@ class HeadController extends Controller
 
 
          $program = Programs::find()->all();
-         $creat = new CreatureForm();
-         if($creat->load(\Yii::$app->request->post()) && $creat->validate()){
-             \Yii::$app->session->setFlash('success', 'Данные приняты');
-             return $this->refresh();
-         }
-        return$this->render('index', [
-            'progr' => $program,
-            'create' => $creat]);
+         $model = new CreatureForm();
+
+
+
+        return$this->render('index', ['program' => $program, 'model'=>$model,]);
 
 
 

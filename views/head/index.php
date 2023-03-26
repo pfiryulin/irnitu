@@ -52,23 +52,14 @@ $this->title = Yii::$app->name;
 
     </section>
     <div class="modalwin creature">
-        <?php $form=ActiveForm::begin([
-                'id' => 'creatProgramForm',
-        ]) ?>
-            <?= $form->field($creat, 'programname')->input('text',
-                [
-                        'placeholder' => 'Название учебной программы',
-                ]); ?>
-            <?= $form->field($creat, 'description')->textarea(['maxlength'=>'1024',
-                'rows'=>"5",
-                'placeholder'=> 'Описание программы, не более 1024 символов',]); ?>
-            <?= $form->field($creat, 'subjects')->listBox( $item, $options = ['Природовадение',
-                'Родная лиетература',
-                'Сопротивление металов',
-                'Распознавание НЛО',]); ?>
+        <?php $form = ActiveForm::begin(); ?>
+            <?= $form->field($model, 'nameprogram');?>
+            <?= $form->field($model, 'description')->textarea(['rows'=>7, 'maxlength' => 1024,]);?>
+            <?= $form->field($model, 'subject');?>
             <div class="form-group">
-                <?= Html::submitButton('Создать', ['class' => 'button']) ?>
+                <?= Html::submitButton('Создать', ['class' => 'button',]); ?>
             </div>
-        <?php $form=ActiveForm::end() ?>
+        <?php ActiveForm::end() ?>
+
     </div>
 </main>
