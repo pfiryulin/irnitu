@@ -11,6 +11,8 @@ use app\models\Roles;
 use app\models\Subjects;
 use yii\base\BaseObject;
 use yii\web\Controller;
+use yii\web\Response;
+use yii\widgets\ActiveForm;
 
 class HeadController extends Controller
 {
@@ -21,11 +23,31 @@ class HeadController extends Controller
          $model = new CreatureForm();
          $subjects = Subjects::find()->all();
 
-         if($model->load(\Yii::$app->request->post()) && $model->validate()){
+//        $programtable->programname = 'Плавающие лодки';
+//        $programtable->deskript = 'lorem10';
+//        $programtable->save();
+        $programtable->load(\Yii::$app->request->post());
+        $programtable->save();
+         if($programtable->save()){
+
              \Yii::$app->session->setFlash('success',
                  'Учебная программа создана, не забудьте добавить предметы');
              return $this->refresh();
          }
+         else{
+             \Yii::$app->session->setFlash('error',
+                 'Что-то пошло не так, возможно такая программа уже есть');
+             return $this->refresh();
+         }
+//         $programtable->load(\Yii::$app->request->post());
+//         if(\Yii::$app->request->isAjax){
+//             \Yii::$app->response->format = Response::FORMAT_JSON;
+//             return ActiveForm::validate($programtable);
+//         }
+//             \Yii::$app->session->setFlash('success',
+//                 'Учебная программа создана, не забудьте добавить предметы');
+//             return $this->refresh();
+
 
         return$this->render('index', ['program' => $program,
             'model'=>$model,
