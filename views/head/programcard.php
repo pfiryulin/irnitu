@@ -8,10 +8,15 @@ $this->title = Yii::$app->name;
 
 
 ?>
+<nav>
+    <a href="<?= \yii\helpers\Url::to(['/head']) ?>">Вернуться к программам</a>
+</nav>
 <main>
 
     <h2><?= $program->programname; ?></h2>
-    <a href="<?= \yii\helpers\Url::to(['/head']) ?>">Вернуться к программам</a>
+    <div>
+        <?= $program->deskript; ?>
+    </div>
     <section class="subject__list">
         <table>
             <tr>
