@@ -13,48 +13,37 @@ $this->title = Yii::$app->name;
     <h2><?= $program->programname; ?></h2>
     <a href="/web/?r=head">Вернуться к программам</a>
     <section class="subject__list">
-        <article class="susubject__list-head item">
-            <div>Предмет</div>
-            <div>Знания</div>
-            <div>Умения</div>
-            <div>Навыки</div>
-        </article>
+        <table>
+            <tr>
+                <th>Предмет</th>
+                <th>Знания</th>
+                <th>Умения</th>
+                <th>Навыки</th>
 
-        <?php
-        if (isset($subid)){
-            foreach ($subid as $sub ){?>
-            <article class="susubject__list item">
-                <div>
+            </tr>
+            <?php
+            if (isset($subid)){
+                foreach ($subid as $sub ){?>
+                    <tr>
+                        <td><?= $sub->subjects->subjectname; ?></td>
+                        <td><?= $sub->subjects->knowledge; ?></td>
+                        <td> <?= $sub->subjects->skill;?></td>
+                        <td><?= $sub->subjects->competency; ?></td>
+                        <td>
+                            <div class="item__button button">
+                                Редактировать
+                            </div>
+                        </td>
+                    </tr>
+                    <tr></tr>
 
-                    <?= $sub->subjects->subjectname; ?>
-
-                </div>
-                <div>
-                    <?= $sub->subjects->knowledge; ?>
-                    <div class="item__button button">
-                        Редактировать
-                    </div>
-                </div>
-                <div>
-                    <?= $sub->subjects->skill;?>
-                    <div class="item__button button">
-                        Редактировать
-                    </div>
-                </div>
-                <div>
-                    <?= $sub->subjects->competency; ?>
-                    <div class="item__button button">
-                        Редактировать
-                    </div>
-                </div>
-        </article>
-      <?php
-                }
+                <?php }
             }
-        else{
-            echo "Предметы не назначены";
-        }
-        ?>
+            else{
+                echo "Предметы не назначены";
+            }
+            ?>
+        </table>
     </section>
 
 <div class="modalwin">

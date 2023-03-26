@@ -33,6 +33,8 @@ nav{
     background: #4fb2f6;
     border-radius: 5px;
     border: none;
+    height: 50px;
+    text-align: center;
 
 }
 
@@ -92,3 +94,10 @@ nav{
     color:green;
 }
 
+table{
+    border-collapse: separate;
+}
+
+tr{
+    border-spacing: 30px;
+}
