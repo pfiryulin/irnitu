@@ -8,7 +8,7 @@ $this->title = Yii::$app->name;
 
 ?>
 <nav>
-    <div class="program__add">
+    <div class="program__add" id="programAdd">
         Создать программу
     </div>
     <div class="program__add">
@@ -41,23 +41,19 @@ $this->title = Yii::$app->name;
             else{
                 echo "У вас нет учебных программ";
             }
-
-
         ?>
 
-
-
-
-
-
+            <?php var_dump($programtable);?>
     </section>
-    <div class="modalwin creature">
-        <div class="close">
+    <div class="modalwin creature" id="programAddWin">
+        <div class="close" id="closeWin">
             Закрыть
         </div>
         <?php $form = ActiveForm::begin(); ?>
             <?= $form->field($model, 'nameprogram');?>
-            <?= $form->field($model, 'description')->textarea(['rows'=>7, 'maxlength' => 1024,]);?>
+            <?= $form->field($model, 'description')->textarea(['rows'=>7,
+                'maxlength' => 1024,
+                'placeholder' => 'Введите описание программы. НЕ более 1024 символов']);?>
             <div class="form-group">
                 <?= Html::submitButton('Создать', ['class' => 'button',]); ?>
             </div>

@@ -60,6 +60,11 @@ nav{
     background: white;
     border-radius: 10px;
     border: 1px solid black;
+    display: none;
+}
+
+.show{
+    display: block;
 }
 
 .form-group{

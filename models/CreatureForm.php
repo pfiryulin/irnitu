@@ -14,7 +14,11 @@ class CreatureForm extends Model
 
     public function rules()
     {
-        return [[['nameprogram', 'description'], 'required' ],];
+        return [
+                [['nameprogram', 'description'], 'required' ],
+                ['description', 'string', 'max'=>1024],
+            ];
+
     }
 
     public function attributeLabels()

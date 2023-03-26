@@ -13,4 +13,8 @@ function changeLinc(){
     }
 }
 
-selectRole.addEventListener('change', changeLinc);
+// selectRole.addEventListener('change', changeLinc);
+
+// let programAddWin = document.getElementsByClassName("creature");
+programAdd.onclick = () => programAddWin.classList.add("show");
+closeWin.onclick =() => programAddWin.classList.remove("show");

@@ -16,7 +16,7 @@ class HeadController extends Controller
 {
     public function actionIndex(){
 
-
+         $programtable = new Programs();
          $program = Programs::find()->all();
          $model = new CreatureForm();
          $subjects = Subjects::find()->all();
@@ -29,7 +29,8 @@ class HeadController extends Controller
 
         return$this->render('index', ['program' => $program,
             'model'=>$model,
-            'subject'=>$subjects]);
+            'subject'=>$subjects,
+            'programtable' => $programtable]);
 
 
 
