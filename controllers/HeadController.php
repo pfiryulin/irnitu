@@ -8,6 +8,7 @@ use app\models\CreatureForm;
 use app\models\Programs;
 use app\models\Programsubject;
 use app\models\Recommendations;
+use app\models\Remarks;
 use app\models\Roles;
 use app\models\Subjects;
 use yii\base\BaseObject;
@@ -25,6 +26,8 @@ class HeadController extends Controller
          $subjects = Subjects::find()->all();
          $recomendations = Recommendations::find()->all();
         $recomendationsLenght = count($recomendations);
+        $remarks = Remarks::find()->all();
+        $remarkslength = count($remarks);
 
 
 
@@ -43,6 +46,7 @@ class HeadController extends Controller
             'subject'=>$subjects,
             'programtable' => $programtable,
             'recomendlen' => $recomendationsLenght,
+            'remarklen'=>$remarkslength
             ]);
 
 
@@ -80,5 +84,12 @@ class HeadController extends Controller
             'recomendation' => $recommendations,
         ],
         );
+    }
+
+    public function actionRemarks(){
+        $remarks = Remarks::find()->all();
+        return $this->render('remarks', [
+            'remark' =>$remarks,
+        ]);
     }
 }

@@ -12,13 +12,13 @@ $this->title = Yii::$app->name;
         Создать программу
     </div>
     <div class="program__add">
-        <a href="">Предметы</a>
+        <a href="<?= \yii\helpers\Url::to(['head/subjects'])?>">Предметы</a>
     </div>
     <div class="program__add">
         <a href="<?= \yii\helpers\Url::to(['head/recommendations']) ?>"> Рекомендации  </a> <span><?= $recomendlen; ?> </span>
     </div>
     <div class="program__add">
-        Замечания
+        <a href="<?= \yii\helpers\Url::to(['head/remarks']) ?>"> Замечания </a> <span><?= $remarklen; ?></span>
     </div>
     <div>
         <a href="/web">На главную</a>
