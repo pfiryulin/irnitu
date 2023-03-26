@@ -12,13 +12,16 @@ $this->title = Yii::$app->name;
         Создать программу
     </div>
     <div class="program__add">
-        Создать предмет
+        <a href="">Предметы</a>
     </div>
     <div class="program__add">
-        Рекомендации <?= $recommendLenght ?>
+        <a href="<?= \yii\helpers\Url::to(['head/recommendations']) ?>"> Рекомендации  </a> <span><?= $recomendlen; ?> </span>
     </div>
     <div class="program__add">
         Замечания
+    </div>
+    <div>
+        <a href="/web">На главную</a>
     </div>
 
 </nav>
@@ -70,17 +73,14 @@ $this->title = Yii::$app->name;
         <div class="form-group">
             <?= Html::submitButton('Создать', ['class' => 'button',]); ?>
         </div>
-
         <?php ActiveForm::end() ?>
-        <?php
-        if(Yii::$app->session->hasFlash('success')){?>
-            <div class="modalwin--message">
-                <?= Yii::$app->session->getFlash('success');?>
-            </div>
-
-        <?php }
-        ?>
 
     </div>
 
+    <div class="modalwin creature" id="subjectAddWin">
+        <div class="close" id="closeWin">
+            Закрыть
+        </div>
+
+    </div>
 </main>

@@ -1,27 +1,15 @@
 <?php
 
 /** @var yii\web\View $this */
-
+use yii\helpers\Html;
 $this->title = Yii::$app->name;
 
 
 ?>
 
-<div class="login__form">
-   Выбирете роль:
-    <select name="" id="selectRole">
-        <option value="">-Роли-</option>
-        <?php 
-        if(isset($role)){
-            foreach ($role as $role){
-              ?>
-        <option value="<?= $role->id ?>"> <?= $role->name?> </option>
-         <?php   }
+<nav>
+    <a href="<?= \yii\helpers\Url::to(['head/']) ?>">Руководитель</a>
+    <a href="<?= \yii\helpers\Url::to(['tutor/']) ?>">Преподаватель</a>
+    <a href="<?= \yii\helpers\Url::to(['supervisor/']) ?>">Куратор</a>
+</nav>
 
-        }
-        ?>
-        
-    </select>
-    <div id="link"><a href="">Войти</a></div>
-
-</div>

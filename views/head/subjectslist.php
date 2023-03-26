@@ -1,18 +1,20 @@
 <?php
 
 /** @var yii\web\View $this */
-
-use app\models\Subjects;
-
+use yii\widgets\ActiveForm;
+use yii\helpers\Html;
 $this->title = Yii::$app->name;
 
 
 ?>
-<main>
 
-    <h2><?= $program->programname; ?></h2>
-    <a href="<?= \yii\helpers\Url::to(['/head']) ?>">Вернуться к программам</a>
-    <section class="subject__list">
+<nav>
+    <div class="program__add">
+        <a href="<?= \yii\helpers\Url::to(['/head']) ?>">Программы</a>
+    </div>
+</nav>
+<main>
+    <section>
         <table>
             <tr>
                 <th>Предмет</th>
@@ -25,10 +27,10 @@ $this->title = Yii::$app->name;
             if (isset($subid)){
                 foreach ($subid as $sub ){?>
                     <tr>
-                        <td><?= $sub->subjects->subjectname; ?></td>
-                        <td><?= $sub->subjects->knowledge; ?></td>
-                        <td> <?= $sub->subjects->skill;?></td>
-                        <td><?= $sub->subjects->competency; ?></td>
+                        <td><?= $sub->subjectname; ?></td>
+                        <td><?= $sub->knowledge; ?></td>
+                        <td> <?= $sub->skill;?></td>
+                        <td><?= $sub->competency; ?></td>
                         <td>
                             <div class="item__button button">
                                 Редактировать
@@ -43,13 +45,5 @@ $this->title = Yii::$app->name;
                 echo "Предметы не назначены";
             }
             ?>
-        </table>
     </section>
-
-<div class="modalwin">
-
-</div>
-
-
 </main>
-

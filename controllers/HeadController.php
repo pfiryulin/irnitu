@@ -7,7 +7,7 @@ namespace app\controllers;
 use app\models\CreatureForm;
 use app\models\Programs;
 use app\models\Programsubject;
-
+use app\models\Recommendations;
 use app\models\Roles;
 use app\models\Subjects;
 use yii\base\BaseObject;
@@ -23,6 +23,8 @@ class HeadController extends Controller
          $program = Programs::find()->all();
          $model = new CreatureForm();
          $subjects = Subjects::find()->all();
+         $recomendations = Recommendations::find()->all();
+        $recomendationsLenght = count($recomendations);
 
 
 
@@ -40,6 +42,7 @@ class HeadController extends Controller
             'model'=>$model,
             'subject'=>$subjects,
             'programtable' => $programtable,
+            'recomendlen' => $recomendationsLenght,
             ]);
 
 
@@ -58,6 +61,24 @@ class HeadController extends Controller
             'program'=>$program,
             'subid'=>$subjectsid,
             ],
+        );
+    }
+
+    public function actionSubjects(){
+        $subjects = Subjects::find()->all();
+
+        return $this->render('subjectslist',
+        [
+            'subid'=>$subjects,
+            ]);
+    }
+
+    public function actionRecommendations(){
+        $recommendations = Recommendations::find()->all();
+        return $this->render('recommendations',
+        [
+            'recomendation' => $recommendations,
+        ],
         );
     }
 }
