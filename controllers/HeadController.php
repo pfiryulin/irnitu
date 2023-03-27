@@ -37,6 +37,7 @@ class HeadController extends Controller
             \Yii::$app->session->setFlash('success',
                 'Учебная программа создана, не забудьте добавить предметы');
             return $this->refresh();
+
         }
 
 
@@ -47,7 +48,8 @@ class HeadController extends Controller
             'subject'=>$subjects,
             'programtable' => $programtable,
             'recomendlen' => $recomendationsLenght,
-            'remarklen'=>$remarkslength
+            'remarklen'=>$remarkslength,
+            'a'=>$a,
             ]);
 
 

@@ -24,12 +24,13 @@ $this->title = Yii::$app->name;
             <?= $form->field($model, 'text' )->textarea(['rows'=>7,
                 'maxlength' => 1024,
                 'placeholder' => 'Введите описание программы. НЕ более 1024 символов']) ?>
-
+            <?= $form->field($model, 'statusid')->hiddenInput(['value'=>'1'],);?>
         <div class="form-group">
             <?= Html::submitButton('Отправить', ['class' => 'button',]); ?>
         </div>
         <?php ActiveForm::end();?>
     </sectio>
+    <?php var_dump($model); ?>
 
 
 </main>

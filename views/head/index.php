@@ -60,7 +60,7 @@ $this->title = Yii::$app->name;
             }
             ?>
         </table>
-
+    <?php var_dump($programtable) ?>
 
     </section>
     <div class="modalwin creature" id="programAddWin">
