@@ -8,6 +8,11 @@ use yii\db\ActiveRecord;
 
 class Recommendations extends ActiveRecord
 {
+    public $programid;
+    public $subjectid;
+    public $indikatorid;
+    public $text;
+
     public static function tableName()
     {
         return 'recommendations';
@@ -27,5 +32,15 @@ class Recommendations extends ActiveRecord
 
     public function getStatus(){
         return $this->hasOne(Status::class, ['id'=>'statusid']);
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'programid' => 'Учебная программа',
+            'subjectid' => 'Предмет',
+            'indikatorid'=>'Индикатор',
+            'text' => 'Ваша рекомендация',
+        ];
     }
 }

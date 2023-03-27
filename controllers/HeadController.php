@@ -95,19 +95,29 @@ class HeadController extends Controller
     }
 
     public function actionUpdateprogram($id){
+        $programTable = new Programs();
         $program = Programs::findOne(['id'=>$id]);
+        $programSubjectList = Programsubject::find()->where(['programid' => $id])->all();
+        $subjectList = Subjects::find()->all();
+
+
+
+
         if(!$program){
             throw new  NotFoundHttpException('Запись не найдена');
         }
 
+
         if($program->load(\Yii::$app->request->post()) && $program->save()){
 
-            \Yii::$app->session->setFlash('success',
-                'Учебная программа создана, не забудьте добавить предметы');
-            return $this->refresh();
+
+            return $this->redirect('/?r=head');
         }
         return $this->render('updateprogram',[
             'program'=>$program,
+            'programSubjectList'=>$programSubjectList,
+            'subjectList'=>$subjectList,
+            'programTable'=>$programTable,
         ]);
 
     }
