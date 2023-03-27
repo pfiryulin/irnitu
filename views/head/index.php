@@ -17,6 +17,9 @@ $this->title = Yii::$app->name;
         <a href="<?= \yii\helpers\Url::to(['head/subjects'])?>">Предметы</a>
     </div>
     <div class="program__add">
+        <a href="<?= \yii\helpers\Url::to(['head/creatsubject'])?>">Создать предмет</a>
+    </div>
+    <div class="program__add">
         <a href="<?= \yii\helpers\Url::to(['head/recommendations']) ?>"> Рекомендации  </a> <span><?= $recomendlen; ?> </span>
     </div>
     <div class="program__add">

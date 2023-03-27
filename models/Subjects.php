@@ -21,10 +21,6 @@ class Subjects extends  ActiveRecord
             [['knowledge', 'skill', 'competency'], 'string', 'max'=>1024],
         ];
 
-//            ['subjactname', 'knowledge', 'skill', 'competency'], 'required',
-//            ['subjactname',], 'unique',
-//            [ 'knowledge', 'skill', 'competency'], ,
-
     }
 
     public function attributeLabels()

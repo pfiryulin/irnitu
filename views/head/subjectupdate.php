@@ -9,23 +9,23 @@ $this->title = Yii::$app->name;
 ?>
 <nav>
     <a href="<?= \yii\helpers\Url::to(['/head']) ?>">Вернуться к программам</a>
-    <a href="<?=\yii\helpers\Url::to(['head/programcard', 'id' => $program->id])?>">Назад</a>
+    <a href="<?=\yii\helpers\Url::to(['/head/subjects'])?>">Назад</a>
 </nav>
 <main>
 <?php
     $form = ActiveForm::begin([
         'id' => 'programAddForm',
     ]);?>
-        <?= $form->field($model, 'subjectname')->input('text',['value'=>$subjects->subjectname,]) ?>
-        <?= $form->field($model, 'knowledge')->textarea([
+        <?= $form->field($subjects, 'subjectname')->input('text',['value'=>$subjects->subjectname,]) ?>
+        <?= $form->field($subjects, 'knowledge')->textarea([
             'row'=>7,
             'maxlength' => 1024,
             'value'=>$subjects->knowledge,]) ?>
-        <?= $form->field($model, 'skill')->textarea([
+        <?= $form->field($subjects, 'skill')->textarea([
             'row'=>7,
             'maxlength' => 1024,
             'value'=>$subjects->skill,]) ?>
-        <?= $form->field($model, 'competency')->textarea([
+        <?= $form->field($subjects, 'competency')->textarea([
             'row'=>7,
             'maxlength' => 1024,
             'value'=>$subjects->competency,]) ?>

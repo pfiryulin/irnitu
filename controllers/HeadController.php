@@ -33,14 +33,6 @@ class HeadController extends Controller
         $recomendationsLenght = count($recomendations);
         $remarks = Remarks::find()->all();
         $remarkslength = count($remarks);
-
-
-
-
-
-
-
-
         return$this->render('index', ['program' => $program,
             'model'=>$model,
             'subject'=>$subjects,
@@ -49,18 +41,11 @@ class HeadController extends Controller
             'remarklen'=>$remarkslength,
             'a'=>$a,
             ]);
-
-
-
-
-
-
     }
 
     public function actionProgramcard($id){
         $program = Programs::find()->where(['id' =>$id])->one();
         $subjectsid = Programsubject::find()->where(['programid' => $id])->all();
-
         return $this->render('programcard',
             [
             'program'=>$program,
@@ -169,8 +154,8 @@ class HeadController extends Controller
         $model = new Subjects();
         $subjects = Subjects::findOne(['id'=>$id]);
 
-        if($model->load(\Yii::$app->request->post()) && $model->save()){
-            return $this->redirect('/?r=head');
+        if($subjects->load(\Yii::$app->request->post()) && $subjects->save()){
+            return $this->redirect('/?r=head/subjects');
         }
 
         return $this->render('subjectupdate',
@@ -178,6 +163,22 @@ class HeadController extends Controller
         'model' => $model,
         'subjects' => $subjects,
                 ],
+        );
+    }
+
+    public function actionCreatsubject(){
+        $model = new Subjects();
+
+
+        if($model->load(\Yii::$app->request->post()) && $model->save()){
+            return $this->redirect('/?r=head');
+        }
+
+        return $this->render('creatsubject',
+            [
+                'model' => $model,
+                'subjects' => $subjects,
+            ],
         );
     }
 }
