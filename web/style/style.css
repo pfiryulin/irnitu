@@ -101,3 +101,8 @@ table{
 tr{
     border-spacing: 30px;
 }
+
+.left, .field-bundletable-subjectid{
+    flex-direction: row-reverse;
+    margin: 0;
+}

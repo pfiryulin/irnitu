@@ -20,4 +20,9 @@ class Programsubject extends  ActiveRecord
         return $this->hasOne(Programs::class, ['id'=>'programid']);
     }
 
+    public function rules(){
+        return [
+            [['subjectid', 'programid'], 'required'],
+        ];
+    }
 }

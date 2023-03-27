@@ -9,7 +9,9 @@ $this->title = Yii::$app->name;
 ?>
 <nav>
     <div class="program__add" id="programAdd">
-        Создать программу
+        <a href="<?= \yii\helpers\Url::to(['head/programcreate'])?>">
+            Создать программу
+        </a>
     </div>
     <div class="program__add">
         <a href="<?= \yii\helpers\Url::to(['head/subjects'])?>">Предметы</a>
@@ -60,31 +62,10 @@ $this->title = Yii::$app->name;
             }
             ?>
         </table>
-    <?php var_dump($programtable) ?>
+
 
     </section>
-    <div class="modalwin creature" id="programAddWin">
-        <div class="close" id="closeWin">
-            Закрыть
-        </div>
-        <?php $form = ActiveForm::begin([
-            'id' =>'programAddForm',
-        ]); ?>
-        <?= $form->field($programtable, 'programname',);?>
-        <?= $form->field($programtable, 'deskript',)->textarea(['rows'=>7,
-            'maxlength' => 1024,
-            'placeholder' => 'Введите описание программы. НЕ более 1024 символов']);?>
-        <div class="form-group">
-            <?= Html::submitButton('Создать', ['class' => 'button',]); ?>
-        </div>
-        <?php ActiveForm::end() ?>
 
-    </div>
 
-    <div class="modalwin creature" id="subjectAddWin">
-        <div class="close" id="closeWin">
-            Закрыть
-        </div>
 
-    </div>
 </main>

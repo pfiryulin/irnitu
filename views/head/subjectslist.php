@@ -33,7 +33,7 @@ $this->title = Yii::$app->name;
                         <td><?= $sub->competency; ?></td>
                         <td>
                             <div class="item__button button">
-                                Редактировать
+                                <a href="<?= \yii\helpers\Url::to(['head/subjectupdate', 'id'=>$sub->id]) ?>">Редактировать</a>
                             </div>
                         </td>
                     </tr>

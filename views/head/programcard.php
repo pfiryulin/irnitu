@@ -35,11 +35,6 @@ $this->title = Yii::$app->name;
                         <td><?= $sub->subjects->knowledge; ?></td>
                         <td> <?= $sub->subjects->skill;?></td>
                         <td><?= $sub->subjects->competency; ?></td>
-                        <td>
-                            <div class="item__button button">
-                                Редактировать
-                            </div>
-                        </td>
                     </tr>
                     <tr></tr>
 

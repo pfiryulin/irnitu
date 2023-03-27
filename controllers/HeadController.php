@@ -4,6 +4,7 @@
 namespace app\controllers;
 
 
+use app\models\Bundletable;
 use app\models\CreatureForm;
 use app\models\Programs;
 use app\models\Programsubject;
@@ -12,10 +13,13 @@ use app\models\Remarks;
 use app\models\Roles;
 use app\models\Subjects;
 use yii\base\BaseObject;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
+use yii;
+use yii\web\Request;
 
 class HeadController extends Controller
 {
@@ -23,7 +27,7 @@ class HeadController extends Controller
 
          $programtable = new Programs();
          $program = Programs::find()->all();
-         $model = new CreatureForm();
+
          $subjects = Subjects::find()->all();
          $recomendations = Recommendations::find()->all();
         $recomendationsLenght = count($recomendations);
@@ -32,13 +36,7 @@ class HeadController extends Controller
 
 
 
-        if($programtable->load(\Yii::$app->request->post()) && $programtable->save()){
 
-            \Yii::$app->session->setFlash('success',
-                'Учебная программа создана, не забудьте добавить предметы');
-            return $this->refresh();
-
-        }
 
 
 
@@ -123,4 +121,64 @@ class HeadController extends Controller
         ]);
 
     }
+
+    public function actionProgramcreate(){
+        $programtableModel = new Programs();
+        if($programtableModel->load(\Yii::$app->request->post()) && $programtableModel->save()){
+
+            \Yii::$app->session->setFlash('success',
+                'Учебная программа создана, не забудьте добавить предметы');
+
+            $newid = Yii::$app->db->getLastInsertID($programtableModel->id);
+
+             return $this->redirect(\yii\helpers\Url::to(['head/subjectadd', 'id' => $newid]));
+
+        }
+
+        return $this->render('programcreate',
+        [
+            'programtable' => $programtableModel,
+            'newid' => $newid,
+        ]);
+    }
+
+    public function actionSubjectadd($id){
+        $bundle = new Programsubject();
+        $program = Programs::findOne(['id'=>$id]);
+        $subjects = Subjects::find()->all();
+        $subject = ArrayHelper::map($subjects, 'id', 'subjectname');
+
+
+
+      if($bundle->load(\Yii::$app->request->post()) && $bundle->save()){
+
+          return $this->refresh();
+        }
+
+
+        return $this->render('subjectadd',
+        [
+            'subjects'=>$subjects,
+            'subject'=>$subject,
+            'program'=>$program,
+            'bundle' => $bundle,
+        ]);
+    }
+
+    public function actionSubjectupdate($id){
+        $model = new Subjects();
+        $subjects = Subjects::findOne(['id'=>$id]);
+
+        if($model->load(\Yii::$app->request->post()) && $model->save()){
+            return $this->redirect('/?r=head');
+        }
+
+        return $this->render('subjectupdate',
+            [
+        'model' => $model,
+        'subjects' => $subjects,
+                ],
+        );
+    }
 }
+
