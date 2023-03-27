@@ -44,9 +44,13 @@ $this->title = Yii::$app->name;
                 <td><a href="<?= \yii\helpers\Url::to(['head/programcard', 'id' => $prog->id]) ?>"><?=$prog->programname?></a></td>
                 <td><?= $prog->deskript ?></td>
                 <td>
-                    <div class="item__button button">
-                        Редактировать
-                    </div>
+
+                        <a href="<?= \yii\helpers\Url::to(['head/updateprogram', 'id' => $prog->id]) ?>">
+                            <div class="item__button button">
+                                Редактировать
+                            </div>
+                        </a>
+
                 </td>
             </tr>
             <?php }

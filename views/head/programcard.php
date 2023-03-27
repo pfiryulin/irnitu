@@ -10,6 +10,7 @@ $this->title = Yii::$app->name;
 ?>
 <nav>
     <a href="<?= \yii\helpers\Url::to(['/head']) ?>">Вернуться к программам</a>
+
 </nav>
 <main>
 

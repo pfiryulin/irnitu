@@ -13,6 +13,7 @@ use app\models\Roles;
 use app\models\Subjects;
 use yii\base\BaseObject;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
 
@@ -91,5 +92,23 @@ class HeadController extends Controller
         return $this->render('remarks', [
             'remark' =>$remarks,
         ]);
+    }
+
+    public function actionUpdateprogram($id){
+        $program = Programs::findOne(['id'=>$id]);
+        if(!$program){
+            throw new  NotFoundHttpException('Запись не найдена');
+        }
+
+        if($program->load(\Yii::$app->request->post()) && $program->save()){
+
+            \Yii::$app->session->setFlash('success',
+                'Учебная программа создана, не забудьте добавить предметы');
+            return $this->refresh();
+        }
+        return $this->render('updateprogram',[
+            'program'=>$program,
+        ]);
+
     }
 }
